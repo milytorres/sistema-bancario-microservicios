@@ -4,6 +4,18 @@ Prueba técnica bancaria implementada como dos microservicios independientes en 
 
 El historial detallado de decisiones, qué construyó cada agente y validaciones manuales realizadas vive en [`backend/docs/progreso.md`](backend/docs/progreso.md); aquí solo se resume.
 
+## Demo en vivo
+
+| Servicio | URL |
+|---|---|
+| Frontend (Angular, Vercel) | https://sistema-bancario-microservicios.vercel.app |
+| Microservicio `cliente` (Render) | https://sistema-bancario-microservicios.onrender.com |
+| Microservicio `cuenta` (Render) | https://microservicios-cuentas.onrender.com |
+| Swagger `cliente` | https://sistema-bancario-microservicios.onrender.com/swagger-ui/index.html |
+| Swagger `cuenta` | https://microservicios-cuentas.onrender.com/swagger-ui/index.html |
+
+Los servicios de Render están en el plan free: si llevan ~15 minutos sin tráfico, la primera petición puede tardar ~30-60s en "despertar" el contenedor. La base de datos PostgreSQL de Render también es free y expira a los 30 días de creada (ver sección 11).
+
 ## Tabla de contenido
 
 - [1. Contexto y decisiones de diseño](#1-contexto-y-decisiones-de-diseño)
@@ -16,6 +28,7 @@ El historial detallado de decisiones, qué construyó cada agente y validaciones
 - [8. Prueba de carga con JMeter](#8-prueba-de-carga-con-jmeter)
 - [9. Uso de IA](#9-uso-de-ia)
 - [10. Consideraciones no funcionales](#10-consideraciones-no-funcionales)
+- [11. Despliegue en producción](#11-despliegue-en-producción)
 
 ## 1. Contexto y decisiones de diseño
 
@@ -224,3 +237,34 @@ Lo siguiente es honesto respecto a qué está implementado y qué queda como tra
 - **Escalado horizontal**: no se probó correr múltiples instancias de `cuenta` detrás de un balanceador; el `PESSIMISTIC_WRITE` mitiga condiciones de carrera a nivel de fila de base de datos, pero no se midió su comportamiento con más de un nodo de aplicación.
 
 **Ya completado** (no es trabajo futuro, se incluye aquí para evitar ambigüedad): se hizo una pasada formal completa de `backend-security-review` y `backend-code-quality` sobre todo el código de ambos microservicios, con 10 hallazgos corregidos (hashing de contraseñas, validación de rango de fechas en `/reportes`, `@Valid` en PATCH, excepciones mal nombradas, logging de errores, credenciales movidas a `.env`, CORS, límites de `@Digits` en montos, verificación de que `devtools` no viaja al jar de producción, y la decisión documentada de mantener expuesto el puerto `8081` por requisito de pruebas con Postman).
+
+## 11. Despliegue en producción
+
+### Arquitectura de despliegue
+
+- **Backend** (`cliente` y `cuenta`): 2 Web Services independientes en **Render**, cada uno construido directamente desde su `Dockerfile` (`Root Directory` = `backend/cliente` y `backend/cuenta` respectivamente, dentro del mismo monorepo).
+- **Base de datos**: **1 sola instancia PostgreSQL gratuita de Render**, hosteando las 2 bases de datos lógicas (`banco_cliente_<sufijo>` y `banco_cuenta`) — Render solo permite 1 base de datos free activa por workspace, así que se replicó el mismo patrón usado en local (`CREATE DATABASE banco_cuenta;` dentro de la misma instancia, en vez de 2 instancias separadas).
+- **Frontend**: build de producción (`ng build --configuration production`) desplegado en **Vercel**, apuntando a las URLs reales de ambos microservicios (compiladas en `environment.prod.ts`, no leídas en runtime).
+
+### Pasos seguidos (resumen)
+
+1. Crear la base PostgreSQL free en Render (región `Virginia (US East)`, Postgres 16).
+2. Importar `db/BaseDatos.sql` contra la base recién creada **desde fuera de Render** (usando la *External Database URL*) — no se usó `psql`/Docker para esto porque ambos fallaron en el entorno de desarrollo (Docker Desktop se reinició a mitad de proceso); se resolvió con un script Python (`psycopg2`) que separa el script en 3 partes (`persona` en la BD inicial, `CREATE DATABASE banco_cuenta;` solo, y `cuenta`/`movimiento` en una segunda conexión a `banco_cuenta`), ya que `CREATE DATABASE` no puede ejecutarse junto a otras instrucciones en la misma transacción.
+3. Crear el Web Service de `cliente` en Render (`Root Directory: backend/cliente`, Docker, plan Free), con variables de entorno `DB_HOST`/`DB_PORT`/`DB_NAME`/`DB_USER`/`DB_PASSWORD` apuntando a la *Internal Database URL* (misma región → red privada).
+4. Crear el Web Service de `cuenta` de la misma forma (`Root Directory: backend/cuenta`), agregando además `CLIENTE_SERVICE_URL` con la URL pública de `cliente` en Render.
+5. Desplegar el frontend en Vercel (`Root Directory: frontend`), con `environment.prod.ts` ya conteniendo las URLs reales de ambos microservicios (commiteadas antes del build, ya que Vercel no inyecta variables de entorno dentro del bundle de Angular salvo configuración adicional).
+6. Actualizar `FRONTEND_URL` en **ambos** microservicios de Render con la URL real de Vercel, para que `CorsConfig` acepte las peticiones del frontend desplegado (antes apuntaba a `localhost:4200`).
+7. Validar el flujo completo end-to-end en producción: listar clientes/cuentas, generar un reporte (que ejercita la comunicación HTTP real entre `cuenta` y `cliente` en producción, no solo en Docker Compose local).
+
+### Variable importante: `PORT`
+
+Render inyecta automáticamente una variable `PORT` y exige que la app escuche en ese puerto exacto (no es configurable). El `application.properties` de ambos microservicios se ajustó para leer `${PORT:${SERVER_PORT:8081}}` (o `8082` en `cuenta`) — así Render controla el puerto en producción sin romper el `SERVER_PORT` que se usa en local/Docker Compose.
+
+### Incidente real durante el despliegue (ver también `ai/decisions.md`)
+
+El primer intento de deploy de `cliente` falló en el build de Render con `cannot find symbol: class ClienteRepositoryPort`. La causa fue un bug en `.gitignore`: la regla `out/` (pensada para ignorar la carpeta de build de IntelliJ) coincidía también con los paquetes `domain/port/out/` e `infrastructure/adapter/out/` de la arquitectura hexagonal — excluyendo silenciosamente 19 archivos de producción del commit inicial en ambos microservicios, sin que se notara en desarrollo local porque esos archivos sí existían en disco. Se corrigió anclando la regla a la raíz (`/out/`) y commiteando los archivos faltantes.
+
+### Limitaciones conocidas del plan free
+
+- Los Web Services de Render "duermen" tras ~15 minutos sin tráfico; la primera petición tras ese período tarda ~30-60s en responder mientras el contenedor arranca de nuevo.
+- La base PostgreSQL free expira a los 30 días de creada (14 días de gracia antes de borrarse). Si la defensa técnica se agenda después de ese plazo, hay que recrearla y volver a correr el import de `db/BaseDatos.sql`.

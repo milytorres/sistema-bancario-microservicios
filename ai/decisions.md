@@ -51,3 +51,13 @@ Este archivo documenta la validación humana del trabajo generado por los 9 agen
 **Hallazgo del agente `backend-security-review`**: el puerto `8081` del microservicio `cliente` queda expuesto al host sin mecanismo de autenticación entre servicios, lo cual en un entorno de producción real sería un riesgo (acceso directo no autorizado).
 
 **Decisión humana**: no se cerró el puerto. El PDF exige explícitamente poder validar `/clientes` con Postman/Swagger de forma directa — cerrar el puerto rompería ese requisito de evaluación. Se documentó la decisión y su justificación directamente en `docker-compose.yml` como comentario, en vez de aplicar una "corrección" que generaría un problema distinto (no poder cumplir el entregable de Postman).
+
+## 8. Bug silencioso en `.gitignore` que excluyó código de producción del repositorio, detectado solo al desplegar
+
+**Lo que pasó**: el primer despliegue real del microservicio `cliente` en Render falló en el build con `cannot find symbol: class ClienteRepositoryPort` — un error que nunca apareció en ninguna compilación local durante todo el desarrollo. La causa: `.gitignore` tenía la regla `out/` (agregada para ignorar la carpeta de build de IntelliJ), pero en sintaxis de Git esa regla sin barra inicial ignora **cualquier carpeta llamada `out` en cualquier nivel del repositorio** — y la arquitectura hexagonal usa literalmente `domain/port/out/` e `infrastructure/adapter/out/` como nombres de paquete reales en ambos microservicios.
+
+**Por qué nunca se detectó antes**: los archivos existían en el disco local y los builds (`mvn compile`, `ng build`, los 48+57 tests) siempre se corrieron contra el sistema de archivos local, no contra lo que realmente había en Git. El `git add -A` inicial silenciosamente omitió 19 archivos de producción (entidades JPA, repositorios, adapters, mappers de ambos microservicios) sin ningún mensaje de error visible en el flujo normal de trabajo.
+
+**Corrección**: se cambió la regla a `/out/` (ancla solo a la raíz del proyecto, donde sí vive la carpeta de IntelliJ), se identificaron los 19 archivos afectados comparando el disco contra `git ls-files`, se agregaron y commitearon, y se verificó con un build limpio (`mvn clean package`) idéntico al que ejecuta el `Dockerfile` antes de reintentar el deploy.
+
+**Por qué importa**: es el ejemplo más claro de esta sesión de un error que **ningún test local podía detectar por diseño** (los tests corren contra el filesystem, no contra el repositorio remoto) — solo se hizo visible al intentar un despliegue real desde el código tal como queda en GitHub. Refuerza por qué vale la pena probar el pipeline de CI/CD real (build desde un checkout limpio del repo) antes de la entrega final, no solo confiar en que "compila en mi máquina".
