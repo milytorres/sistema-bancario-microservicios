@@ -1,0 +1,72 @@
+<div class="cliente-form-container">
+  <h2>{{ modoEdicion ? 'Editar cliente' : 'Nuevo cliente' }}</h2>
+
+  <form [formGroup]="form" (ngSubmit)="guardar()">
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Nombre</mat-label>
+      <input matInput formControlName="nombre" maxlength="120" required>
+      <mat-error *ngIf="form.get('nombre')?.hasError('required')">El nombre es obligatorio</mat-error>
+      <mat-error *ngIf="form.get('nombre')?.hasError('maxlength')">Maximo 120 caracteres</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Genero</mat-label>
+      <mat-select formControlName="genero">
+        <mat-option value="Masculino">Masculino</mat-option>
+        <mat-option value="Femenino">Femenino</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Fecha de nacimiento</mat-label>
+      <input matInput [matDatepicker]="pickerNacimiento" formControlName="fechaNacimiento" [max]="hoy">
+      <mat-datepicker-toggle matSuffix [for]="pickerNacimiento"></mat-datepicker-toggle>
+      <mat-datepicker #pickerNacimiento></mat-datepicker>
+      <mat-hint *ngIf="form.get('edad')?.value">Edad calculada: {{ form.get('edad')?.value }} años</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Identificacion</mat-label>
+      <input matInput formControlName="identificacion" maxlength="30" required>
+      <mat-error *ngIf="form.get('identificacion')?.hasError('required')">La identificacion es obligatoria</mat-error>
+      <mat-error *ngIf="form.get('identificacion')?.hasError('maxlength')">Maximo 30 caracteres</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Direccion</mat-label>
+      <input matInput formControlName="direccion" maxlength="200">
+      <mat-error *ngIf="form.get('direccion')?.hasError('maxlength')">Maximo 200 caracteres</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Telefono</mat-label>
+      <input matInput formControlName="telefono" maxlength="20">
+      <mat-error *ngIf="form.get('telefono')?.hasError('maxlength')">Maximo 20 caracteres</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Nombre de usuario</mat-label>
+      <input matInput formControlName="clienteId" maxlength="50" required
+             placeholder="Ej. jlema, mariana23 (lo usarás para iniciar sesión)">
+      <mat-hint>Este será tu usuario para iniciar sesión más adelante</mat-hint>
+      <mat-error *ngIf="form.get('clienteId')?.hasError('required')">El nombre de usuario es obligatorio</mat-error>
+      <mat-error *ngIf="form.get('clienteId')?.hasError('maxlength')">Maximo 50 caracteres</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Contrasena</mat-label>
+      <input matInput type="password" formControlName="contrasena" [required]="!modoEdicion"
+             placeholder="Para iniciar sesión con tu usuario">
+      <mat-error *ngIf="form.get('contrasena')?.hasError('required')">La contrasena es obligatoria</mat-error>
+      <mat-hint *ngIf="modoEdicion">Dejar en blanco para no modificarla</mat-hint>
+    </mat-form-field>
+
+    <mat-checkbox formControlName="estado">Activo</mat-checkbox>
+
+    <div class="cliente-form-actions">
+      <button mat-button type="button" (click)="cancelar()">Cancelar</button>
+      <button mat-raised-button color="primary" type="submit" [disabled]="guardando">Guardar</button>
+    </div>
+  </form>
+</div>

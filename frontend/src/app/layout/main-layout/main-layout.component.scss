@@ -1,0 +1,21 @@
+.layout-container {
+  height: 100vh;
+}
+
+.layout-sidenav {
+  width: 220px;
+}
+
+.layout-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+.layout-content {
+  padding: 16px;
+}
+
+.active-link {
+  background-color: rgba(0, 0, 0, 0.08);
+}

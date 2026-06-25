@@ -1,0 +1,16 @@
+.reporte-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: flex-start;
+  margin-bottom: 16px;
+}
+
+.reporte-table {
+  width: 100%;
+}
+
+.mensaje-error {
+  color: #b00020;
+  margin: 16px 0;
+}

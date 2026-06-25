@@ -1,0 +1,51 @@
+<div class="cuenta-form-container">
+  <h2>{{ modoEdicion ? 'Editar cuenta' : 'Nueva cuenta' }}</h2>
+
+  <form [formGroup]="form" (ngSubmit)="guardar()">
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Numero de cuenta</mat-label>
+      <input matInput formControlName="numeroCuenta" required>
+      <mat-error *ngIf="form.get('numeroCuenta')?.hasError('required')">El numero de cuenta es obligatorio</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Tipo de cuenta</mat-label>
+      <mat-select formControlName="tipoCuenta" required>
+        <mat-option *ngFor="let tipo of tiposCuenta" [value]="tipo">{{ tipo }}</mat-option>
+      </mat-select>
+      <mat-error *ngIf="form.get('tipoCuenta')?.hasError('required')">El tipo de cuenta es obligatorio</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Saldo inicial</mat-label>
+      <input matInput type="number" formControlName="saldoInicial" min="0" step="0.01" required>
+      <mat-error *ngIf="form.get('saldoInicial')?.hasError('required')">El saldo inicial es obligatorio</mat-error>
+      <mat-error *ngIf="form.get('saldoInicial')?.hasError('min')">El saldo inicial no puede ser negativo</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Cliente</mat-label>
+      <input matInput
+             [formControl]="buscadorCliente"
+             [matAutocomplete]="autoCliente"
+             placeholder="Buscar por nombre o usuario"
+             [disabled]="cargandoClientes">
+      <mat-autocomplete #autoCliente="matAutocomplete"
+                         [displayWith]="mostrarCliente"
+                         (optionSelected)="seleccionarCliente($event.option.value)">
+        <mat-option *ngFor="let cliente of clientesFiltrados$ | async" [value]="cliente">
+          {{ cliente.nombre }} ({{ cliente.clienteId }})
+        </mat-option>
+      </mat-autocomplete>
+      <mat-error *ngIf="form.get('clienteId')?.hasError('required')">Debes seleccionar un cliente</mat-error>
+    </mat-form-field>
+
+    <mat-checkbox formControlName="estado">Activa</mat-checkbox>
+
+    <div class="cuenta-form-actions">
+      <button mat-button type="button" (click)="cancelar()">Cancelar</button>
+      <button mat-raised-button color="primary" type="submit" [disabled]="guardando">Guardar</button>
+    </div>
+  </form>
+</div>

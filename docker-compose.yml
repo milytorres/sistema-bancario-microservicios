@@ -1,0 +1,70 @@
+services:
+  db:
+    image: postgres:16
+    container_name: banco-postgres
+    restart: unless-stopped
+    # Un solo contenedor Postgres, con 2 bases de datos lógicamente separadas:
+    # banco_cliente (microservicio Cliente/Persona) y banco_cuenta (microservicio Cuenta/Movimiento).
+    # banco_cuenta se crea dentro de BaseDatos.sql vía CREATE DATABASE + \c.
+    environment:
+      POSTGRES_DB: ${DB_NAME_CLIENTE:-banco_cliente}
+      POSTGRES_USER: ${DB_USER:-postgres}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-postgres}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./db/BaseDatos.sql:/docker-entrypoint-initdb.d/01-BaseDatos.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER:-postgres}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  cliente:
+    build: ./backend/cliente
+    container_name: banco-cliente
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      SERVER_PORT: 8081
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_NAME: ${DB_NAME_CLIENTE:-banco_cliente}
+      DB_USER: ${DB_USER:-postgres}
+      DB_PASSWORD: ${DB_PASSWORD:-postgres}
+      JPA_DDL_AUTO: validate
+      FRONTEND_URL: ${FRONTEND_URL:-http://localhost:4200}
+    # Puerto publicado intencionalmente: el PDF exige validar /clientes directamente
+    # con Postman/Swagger. Mitigación: CORS restringe el acceso desde navegador a
+    # FRONTEND_URL; esto no protege contra acceso directo (curl/Postman) por diseño,
+    # ya que es justamente el requisito de prueba funcional del enunciado.
+    ports:
+      - "8081:8081"
+
+  cuenta:
+    build: ./backend/cuenta
+    container_name: banco-cuenta
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+      cliente:
+        condition: service_started
+    environment:
+      SERVER_PORT: 8082
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_NAME: ${DB_NAME_CUENTA:-banco_cuenta}
+      DB_USER: ${DB_USER:-postgres}
+      DB_PASSWORD: ${DB_PASSWORD:-postgres}
+      JPA_DDL_AUTO: validate
+      CLIENTE_SERVICE_URL: http://cliente:8081
+      FRONTEND_URL: ${FRONTEND_URL:-http://localhost:4200}
+    ports:
+      - "8082:8082"
+
+volumes:
+  postgres_data:

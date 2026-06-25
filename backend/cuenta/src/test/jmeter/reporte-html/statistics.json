@@ -1,0 +1,34 @@
+{
+  "Total" : {
+    "transaction" : "Total",
+    "sampleCount" : 1000,
+    "errorCount" : 0,
+    "errorPct" : 0.0,
+    "meanResTime" : 98.94500000000019,
+    "medianResTime" : 88.0,
+    "minResTime" : 7.0,
+    "maxResTime" : 2328.0,
+    "pct1ResTime" : 129.0,
+    "pct2ResTime" : 149.0,
+    "pct3ResTime" : 273.8100000000002,
+    "throughput" : 132.38019592268995,
+    "receivedKBytesPerSec" : 49.503341565726764,
+    "sentKBytesPerSec" : 32.83649391051099
+  },
+  "POST /movimientos - Deposito" : {
+    "transaction" : "POST /movimientos - Deposito",
+    "sampleCount" : 1000,
+    "errorCount" : 0,
+    "errorPct" : 0.0,
+    "meanResTime" : 98.94500000000019,
+    "medianResTime" : 88.0,
+    "minResTime" : 7.0,
+    "maxResTime" : 2328.0,
+    "pct1ResTime" : 129.0,
+    "pct2ResTime" : 149.0,
+    "pct3ResTime" : 273.8100000000002,
+    "throughput" : 132.38019592268995,
+    "receivedKBytesPerSec" : 49.503341565726764,
+    "sentKBytesPerSec" : 32.83649391051099
+  }
+}

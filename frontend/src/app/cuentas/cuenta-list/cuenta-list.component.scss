@@ -1,0 +1,15 @@
+.cuenta-list-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.cuenta-table {
+  width: 100%;
+}
+
+.mensaje-error {
+  color: #b00020;
+  margin: 16px 0;
+}

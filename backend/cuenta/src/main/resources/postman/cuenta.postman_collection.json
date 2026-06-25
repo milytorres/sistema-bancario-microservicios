@@ -1,0 +1,994 @@
+{
+    "item": [
+        {
+            "name": "cuentas",
+            "description": "",
+            "item": [
+                {
+                    "name": "{id}",
+                    "description": "",
+                    "item": [
+                        {
+                            "id": "fa42b044-c508-4b88-a6c8-c28082b7ab3b",
+                            "name": "buscar Por Id",
+                            "request": {
+                                "name": "buscar Por Id",
+                                "description": {},
+                                "url": {
+                                    "path": [
+                                        "cuentas",
+                                        ":id"
+                                    ],
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "query": [],
+                                    "variable": [
+                                        {
+                                            "type": "any",
+                                            "value": "<long>",
+                                            "key": "id",
+                                            "disabled": false,
+                                            "description": {
+                                                "content": "(Required) ",
+                                                "type": "text/plain"
+                                            }
+                                        }
+                                    ]
+                                },
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "*/*"
+                                    }
+                                ],
+                                "method": "GET",
+                                "body": {},
+                                "auth": null
+                            },
+                            "response": [
+                                {
+                                    "id": "d73b154d-e3ce-4bbf-97d7-0d26ee07c9ba",
+                                    "name": "OK",
+                                    "originalRequest": {
+                                        "url": {
+                                            "path": [
+                                                "cuentas",
+                                                ":id"
+                                            ],
+                                            "host": [
+                                                "{{baseUrl}}"
+                                            ],
+                                            "query": [],
+                                            "variable": [
+                                                {
+                                                    "disabled": false,
+                                                    "description": {
+                                                        "content": "(Required) ",
+                                                        "type": "text/plain"
+                                                    },
+                                                    "type": "any",
+                                                    "value": "<long>",
+                                                    "key": "id"
+                                                }
+                                            ]
+                                        },
+                                        "header": [
+                                            {
+                                                "key": "Accept",
+                                                "value": "*/*"
+                                            }
+                                        ],
+                                        "method": "GET",
+                                        "body": {}
+                                    },
+                                    "status": "OK",
+                                    "code": 200,
+                                    "header": [
+                                        {
+                                            "key": "Content-Type",
+                                            "value": "*/*"
+                                        }
+                                    ],
+                                    "body": "{\n  \"id\": \"<long>\",\n  \"numeroCuenta\": \"<string>\",\n  \"tipoCuenta\": \"CORRIENTE\",\n  \"saldoInicial\": \"<number>\",\n  \"saldoDisponible\": \"<number>\",\n  \"estado\": \"<boolean>\",\n  \"clienteId\": \"<string>\"\n}",
+                                    "cookie": [],
+                                    "_postman_previewlanguage": "text"
+                                }
+                            ],
+                            "event": [],
+                            "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                            }
+                        },
+                        {
+                            "id": "fa832077-8622-49f4-a488-52719b9099af",
+                            "name": "actualizar",
+                            "request": {
+                                "name": "actualizar",
+                                "description": {},
+                                "url": {
+                                    "path": [
+                                        "cuentas",
+                                        ":id"
+                                    ],
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "query": [],
+                                    "variable": [
+                                        {
+                                            "type": "any",
+                                            "value": "<long>",
+                                            "key": "id",
+                                            "disabled": false,
+                                            "description": {
+                                                "content": "(Required) ",
+                                                "type": "text/plain"
+                                            }
+                                        }
+                                    ]
+                                },
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "*/*"
+                                    }
+                                ],
+                                "method": "PUT",
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n  \"clienteId\": \"<string>\",\n  \"estado\": \"<boolean>\",\n  \"numeroCuenta\": \"<string>\",\n  \"saldoInicial\": \"<number>\",\n  \"tipoCuenta\": \"AHORRO\"\n}",
+                                    "options": {
+                                        "raw": {
+                                            "headerFamily": "json",
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "auth": null
+                            },
+                            "response": [
+                                {
+                                    "id": "309fb8ad-e215-45da-b519-12267cad1609",
+                                    "name": "OK",
+                                    "originalRequest": {
+                                        "url": {
+                                            "path": [
+                                                "cuentas",
+                                                ":id"
+                                            ],
+                                            "host": [
+                                                "{{baseUrl}}"
+                                            ],
+                                            "query": [],
+                                            "variable": [
+                                                {
+                                                    "disabled": false,
+                                                    "description": {
+                                                        "content": "(Required) ",
+                                                        "type": "text/plain"
+                                                    },
+                                                    "type": "any",
+                                                    "value": "<long>",
+                                                    "key": "id"
+                                                }
+                                            ]
+                                        },
+                                        "header": [
+                                            {
+                                                "key": "Content-Type",
+                                                "value": "application/json"
+                                            },
+                                            {
+                                                "key": "Accept",
+                                                "value": "*/*"
+                                            }
+                                        ],
+                                        "method": "PUT",
+                                        "body": {
+                                            "mode": "raw",
+                                            "raw": "{\n  \"clienteId\": \"<string>\",\n  \"estado\": \"<boolean>\",\n  \"numeroCuenta\": \"<string>\",\n  \"saldoInicial\": \"<number>\",\n  \"tipoCuenta\": \"AHORRO\"\n}",
+                                            "options": {
+                                                "raw": {
+                                                    "headerFamily": "json",
+                                                    "language": "json"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "status": "OK",
+                                    "code": 200,
+                                    "header": [
+                                        {
+                                            "key": "Content-Type",
+                                            "value": "*/*"
+                                        }
+                                    ],
+                                    "body": "{\n  \"id\": \"<long>\",\n  \"numeroCuenta\": \"<string>\",\n  \"tipoCuenta\": \"CORRIENTE\",\n  \"saldoInicial\": \"<number>\",\n  \"saldoDisponible\": \"<number>\",\n  \"estado\": \"<boolean>\",\n  \"clienteId\": \"<string>\"\n}",
+                                    "cookie": [],
+                                    "_postman_previewlanguage": "text"
+                                }
+                            ],
+                            "event": [],
+                            "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                            }
+                        },
+                        {
+                            "id": "1c8354b4-cde5-46aa-817f-ff665cc3f0c3",
+                            "name": "eliminar",
+                            "request": {
+                                "name": "eliminar",
+                                "description": {},
+                                "url": {
+                                    "path": [
+                                        "cuentas",
+                                        ":id"
+                                    ],
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "query": [],
+                                    "variable": [
+                                        {
+                                            "type": "any",
+                                            "value": "<long>",
+                                            "key": "id",
+                                            "disabled": false,
+                                            "description": {
+                                                "content": "(Required) ",
+                                                "type": "text/plain"
+                                            }
+                                        }
+                                    ]
+                                },
+                                "method": "DELETE",
+                                "body": {},
+                                "auth": null
+                            },
+                            "response": [
+                                {
+                                    "id": "8d3c3329-81ed-47db-97a1-2f6ff2fd6190",
+                                    "name": "No Content",
+                                    "originalRequest": {
+                                        "url": {
+                                            "path": [
+                                                "cuentas",
+                                                ":id"
+                                            ],
+                                            "host": [
+                                                "{{baseUrl}}"
+                                            ],
+                                            "query": [],
+                                            "variable": [
+                                                {
+                                                    "disabled": false,
+                                                    "description": {
+                                                        "content": "(Required) ",
+                                                        "type": "text/plain"
+                                                    },
+                                                    "type": "any",
+                                                    "value": "<long>",
+                                                    "key": "id"
+                                                }
+                                            ]
+                                        },
+                                        "method": "DELETE",
+                                        "body": {}
+                                    },
+                                    "status": "No Content",
+                                    "code": 204,
+                                    "header": [],
+                                    "cookie": [],
+                                    "_postman_previewlanguage": "text"
+                                }
+                            ],
+                            "event": [],
+                            "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                            }
+                        },
+                        {
+                            "id": "ee5f1ca7-926a-432f-b593-26f01c59f60e",
+                            "name": "actualizar Parcial",
+                            "request": {
+                                "name": "actualizar Parcial",
+                                "description": {},
+                                "url": {
+                                    "path": [
+                                        "cuentas",
+                                        ":id"
+                                    ],
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "query": [],
+                                    "variable": [
+                                        {
+                                            "type": "any",
+                                            "value": "<long>",
+                                            "key": "id",
+                                            "disabled": false,
+                                            "description": {
+                                                "content": "(Required) ",
+                                                "type": "text/plain"
+                                            }
+                                        }
+                                    ]
+                                },
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "*/*"
+                                    }
+                                ],
+                                "method": "PATCH",
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n  \"tipoCuenta\": \"AHORRO\",\n  \"estado\": \"<boolean>\"\n}",
+                                    "options": {
+                                        "raw": {
+                                            "headerFamily": "json",
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "auth": null
+                            },
+                            "response": [
+                                {
+                                    "id": "d36e5fae-b83e-48bd-ba46-05eb9abc0834",
+                                    "name": "OK",
+                                    "originalRequest": {
+                                        "url": {
+                                            "path": [
+                                                "cuentas",
+                                                ":id"
+                                            ],
+                                            "host": [
+                                                "{{baseUrl}}"
+                                            ],
+                                            "query": [],
+                                            "variable": [
+                                                {
+                                                    "disabled": false,
+                                                    "description": {
+                                                        "content": "(Required) ",
+                                                        "type": "text/plain"
+                                                    },
+                                                    "type": "any",
+                                                    "value": "<long>",
+                                                    "key": "id"
+                                                }
+                                            ]
+                                        },
+                                        "header": [
+                                            {
+                                                "key": "Content-Type",
+                                                "value": "application/json"
+                                            },
+                                            {
+                                                "key": "Accept",
+                                                "value": "*/*"
+                                            }
+                                        ],
+                                        "method": "PATCH",
+                                        "body": {
+                                            "mode": "raw",
+                                            "raw": "{\n  \"tipoCuenta\": \"AHORRO\",\n  \"estado\": \"<boolean>\"\n}",
+                                            "options": {
+                                                "raw": {
+                                                    "headerFamily": "json",
+                                                    "language": "json"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "status": "OK",
+                                    "code": 200,
+                                    "header": [
+                                        {
+                                            "key": "Content-Type",
+                                            "value": "*/*"
+                                        }
+                                    ],
+                                    "body": "{\n  \"id\": \"<long>\",\n  \"numeroCuenta\": \"<string>\",\n  \"tipoCuenta\": \"CORRIENTE\",\n  \"saldoInicial\": \"<number>\",\n  \"saldoDisponible\": \"<number>\",\n  \"estado\": \"<boolean>\",\n  \"clienteId\": \"<string>\"\n}",
+                                    "cookie": [],
+                                    "_postman_previewlanguage": "text"
+                                }
+                            ],
+                            "event": [],
+                            "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": "1da1d943-e6b8-4c7e-b926-aae22956cba8",
+                    "name": "listar",
+                    "request": {
+                        "name": "listar",
+                        "description": {},
+                        "url": {
+                            "path": [
+                                "cuentas"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [],
+                            "variable": []
+                        },
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "*/*"
+                            }
+                        ],
+                        "method": "GET",
+                        "body": {},
+                        "auth": null
+                    },
+                    "response": [
+                        {
+                            "id": "58cd8874-efb3-4a77-b425-1b073456b6ff",
+                            "name": "OK",
+                            "originalRequest": {
+                                "url": {
+                                    "path": [
+                                        "cuentas"
+                                    ],
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "query": [],
+                                    "variable": []
+                                },
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "*/*"
+                                    }
+                                ],
+                                "method": "GET",
+                                "body": {}
+                            },
+                            "status": "OK",
+                            "code": 200,
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "*/*"
+                                }
+                            ],
+                            "body": "[\n  {\n    \"id\": \"<long>\",\n    \"numeroCuenta\": \"<string>\",\n    \"tipoCuenta\": \"AHORRO\",\n    \"saldoInicial\": \"<number>\",\n    \"saldoDisponible\": \"<number>\",\n    \"estado\": \"<boolean>\",\n    \"clienteId\": \"<string>\"\n  },\n  {\n    \"id\": \"<long>\",\n    \"numeroCuenta\": \"<string>\",\n    \"tipoCuenta\": \"CORRIENTE\",\n    \"saldoInicial\": \"<number>\",\n    \"saldoDisponible\": \"<number>\",\n    \"estado\": \"<boolean>\",\n    \"clienteId\": \"<string>\"\n  }\n]",
+                            "cookie": [],
+                            "_postman_previewlanguage": "text"
+                        }
+                    ],
+                    "event": [],
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    }
+                },
+                {
+                    "id": "aaafc8a4-cd02-44ce-a297-90f18bb6a760",
+                    "name": "crear",
+                    "request": {
+                        "name": "crear",
+                        "description": {},
+                        "url": {
+                            "path": [
+                                "cuentas"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [],
+                            "variable": []
+                        },
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "*/*"
+                            }
+                        ],
+                        "method": "POST",
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"clienteId\": \"<string>\",\n  \"estado\": \"<boolean>\",\n  \"numeroCuenta\": \"<string>\",\n  \"saldoInicial\": \"<number>\",\n  \"tipoCuenta\": \"AHORRO\"\n}",
+                            "options": {
+                                "raw": {
+                                    "headerFamily": "json",
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "auth": null
+                    },
+                    "response": [
+                        {
+                            "id": "8682657f-9618-4aa9-b431-52ce9c5be440",
+                            "name": "Created",
+                            "originalRequest": {
+                                "url": {
+                                    "path": [
+                                        "cuentas"
+                                    ],
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "query": [],
+                                    "variable": []
+                                },
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "*/*"
+                                    }
+                                ],
+                                "method": "POST",
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n  \"clienteId\": \"<string>\",\n  \"estado\": \"<boolean>\",\n  \"numeroCuenta\": \"<string>\",\n  \"saldoInicial\": \"<number>\",\n  \"tipoCuenta\": \"AHORRO\"\n}",
+                                    "options": {
+                                        "raw": {
+                                            "headerFamily": "json",
+                                            "language": "json"
+                                        }
+                                    }
+                                }
+                            },
+                            "status": "Created",
+                            "code": 201,
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "*/*"
+                                }
+                            ],
+                            "body": "{\n  \"id\": \"<long>\",\n  \"numeroCuenta\": \"<string>\",\n  \"tipoCuenta\": \"CORRIENTE\",\n  \"saldoInicial\": \"<number>\",\n  \"saldoDisponible\": \"<number>\",\n  \"estado\": \"<boolean>\",\n  \"clienteId\": \"<string>\"\n}",
+                            "cookie": [],
+                            "_postman_previewlanguage": "text"
+                        }
+                    ],
+                    "event": [],
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "movimientos",
+            "description": "",
+            "item": [
+                {
+                    "id": "c4fbd63a-1390-40d1-9c2b-f4c02c1aedc1",
+                    "name": "listar Por Cuenta",
+                    "request": {
+                        "name": "listar Por Cuenta",
+                        "description": {},
+                        "url": {
+                            "path": [
+                                "movimientos"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [
+                                {
+                                    "disabled": false,
+                                    "description": {
+                                        "content": "(Required) ",
+                                        "type": "text/plain"
+                                    },
+                                    "key": "cuentaId",
+                                    "value": "<long>"
+                                }
+                            ],
+                            "variable": []
+                        },
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "*/*"
+                            }
+                        ],
+                        "method": "GET",
+                        "body": {},
+                        "auth": null
+                    },
+                    "response": [
+                        {
+                            "id": "dc20d81e-9c69-401a-adf0-71d661c15ee4",
+                            "name": "OK",
+                            "originalRequest": {
+                                "url": {
+                                    "path": [
+                                        "movimientos"
+                                    ],
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "query": [
+                                        {
+                                            "disabled": false,
+                                            "description": {
+                                                "content": "(Required) ",
+                                                "type": "text/plain"
+                                            },
+                                            "key": "cuentaId",
+                                            "value": "<long>"
+                                        }
+                                    ],
+                                    "variable": []
+                                },
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "*/*"
+                                    }
+                                ],
+                                "method": "GET",
+                                "body": {}
+                            },
+                            "status": "OK",
+                            "code": 200,
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "*/*"
+                                }
+                            ],
+                            "body": "[\n  {\n    \"id\": \"<long>\",\n    \"fecha\": \"<dateTime>\",\n    \"tipoMovimiento\": \"DEPOSITO\",\n    \"valor\": \"<number>\",\n    \"saldo\": \"<number>\",\n    \"cuentaId\": \"<long>\"\n  },\n  {\n    \"id\": \"<long>\",\n    \"fecha\": \"<dateTime>\",\n    \"tipoMovimiento\": \"RETIRO\",\n    \"valor\": \"<number>\",\n    \"saldo\": \"<number>\",\n    \"cuentaId\": \"<long>\"\n  }\n]",
+                            "cookie": [],
+                            "_postman_previewlanguage": "text"
+                        }
+                    ],
+                    "event": [],
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    }
+                },
+                {
+                    "id": "ce121471-0248-4eac-b808-e8f1f2944c1b",
+                    "name": "registrar",
+                    "request": {
+                        "name": "registrar",
+                        "description": {},
+                        "url": {
+                            "path": [
+                                "movimientos"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [],
+                            "variable": []
+                        },
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "*/*"
+                            }
+                        ],
+                        "method": "POST",
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"cuentaId\": \"<long>\",\n  \"tipoMovimiento\": \"DEPOSITO\",\n  \"valor\": \"<number>\"\n}",
+                            "options": {
+                                "raw": {
+                                    "headerFamily": "json",
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "auth": null
+                    },
+                    "response": [
+                        {
+                            "id": "9e3eb6fe-5987-4f64-8f4c-26c0fd89da81",
+                            "name": "Created",
+                            "originalRequest": {
+                                "url": {
+                                    "path": [
+                                        "movimientos"
+                                    ],
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "query": [],
+                                    "variable": []
+                                },
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "*/*"
+                                    }
+                                ],
+                                "method": "POST",
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n  \"cuentaId\": \"<long>\",\n  \"tipoMovimiento\": \"DEPOSITO\",\n  \"valor\": \"<number>\"\n}",
+                                    "options": {
+                                        "raw": {
+                                            "headerFamily": "json",
+                                            "language": "json"
+                                        }
+                                    }
+                                }
+                            },
+                            "status": "Created",
+                            "code": 201,
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "*/*"
+                                }
+                            ],
+                            "body": "{\n  \"id\": \"<long>\",\n  \"fecha\": \"<dateTime>\",\n  \"tipoMovimiento\": \"DEPOSITO\",\n  \"valor\": \"<number>\",\n  \"saldo\": \"<number>\",\n  \"cuentaId\": \"<long>\"\n}",
+                            "cookie": [],
+                            "_postman_previewlanguage": "text"
+                        }
+                    ],
+                    "event": [],
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    }
+                },
+                {
+                    "name": "{id}",
+                    "description": "",
+                    "item": [
+                        {
+                            "id": "4fc3d669-5630-4074-a912-38bca7a0f22b",
+                            "name": "buscar Por Id 1",
+                            "request": {
+                                "name": "buscar Por Id 1",
+                                "description": {},
+                                "url": {
+                                    "path": [
+                                        "movimientos",
+                                        ":id"
+                                    ],
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "query": [],
+                                    "variable": [
+                                        {
+                                            "type": "any",
+                                            "value": "<long>",
+                                            "key": "id",
+                                            "disabled": false,
+                                            "description": {
+                                                "content": "(Required) ",
+                                                "type": "text/plain"
+                                            }
+                                        }
+                                    ]
+                                },
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "*/*"
+                                    }
+                                ],
+                                "method": "GET",
+                                "body": {},
+                                "auth": null
+                            },
+                            "response": [
+                                {
+                                    "id": "6cdbde21-a0df-42a9-ad9f-b8e27f3ba878",
+                                    "name": "OK",
+                                    "originalRequest": {
+                                        "url": {
+                                            "path": [
+                                                "movimientos",
+                                                ":id"
+                                            ],
+                                            "host": [
+                                                "{{baseUrl}}"
+                                            ],
+                                            "query": [],
+                                            "variable": [
+                                                {
+                                                    "disabled": false,
+                                                    "description": {
+                                                        "content": "(Required) ",
+                                                        "type": "text/plain"
+                                                    },
+                                                    "type": "any",
+                                                    "value": "<long>",
+                                                    "key": "id"
+                                                }
+                                            ]
+                                        },
+                                        "header": [
+                                            {
+                                                "key": "Accept",
+                                                "value": "*/*"
+                                            }
+                                        ],
+                                        "method": "GET",
+                                        "body": {}
+                                    },
+                                    "status": "OK",
+                                    "code": 200,
+                                    "header": [
+                                        {
+                                            "key": "Content-Type",
+                                            "value": "*/*"
+                                        }
+                                    ],
+                                    "body": "{\n  \"id\": \"<long>\",\n  \"fecha\": \"<dateTime>\",\n  \"tipoMovimiento\": \"DEPOSITO\",\n  \"valor\": \"<number>\",\n  \"saldo\": \"<number>\",\n  \"cuentaId\": \"<long>\"\n}",
+                                    "cookie": [],
+                                    "_postman_previewlanguage": "text"
+                                }
+                            ],
+                            "event": [],
+                            "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "reportes",
+            "description": "",
+            "item": [
+                {
+                    "id": "9493f7f8-3936-4516-8883-62e50c76b8de",
+                    "name": "generar",
+                    "request": {
+                        "name": "generar",
+                        "description": {},
+                        "url": {
+                            "path": [
+                                "reportes"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [
+                                {
+                                    "disabled": false,
+                                    "description": {
+                                        "content": "(Required) ",
+                                        "type": "text/plain"
+                                    },
+                                    "key": "fecha",
+                                    "value": "<string>"
+                                },
+                                {
+                                    "disabled": false,
+                                    "description": {
+                                        "content": "(Required) ",
+                                        "type": "text/plain"
+                                    },
+                                    "key": "cliente",
+                                    "value": "<string>"
+                                }
+                            ],
+                            "variable": []
+                        },
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "*/*"
+                            }
+                        ],
+                        "method": "GET",
+                        "body": {},
+                        "auth": null
+                    },
+                    "response": [
+                        {
+                            "id": "c0e3bf0d-16d6-451c-ba48-331c0ca140f9",
+                            "name": "OK",
+                            "originalRequest": {
+                                "url": {
+                                    "path": [
+                                        "reportes"
+                                    ],
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "query": [
+                                        {
+                                            "disabled": false,
+                                            "description": {
+                                                "content": "(Required) ",
+                                                "type": "text/plain"
+                                            },
+                                            "key": "fecha",
+                                            "value": "<string>"
+                                        },
+                                        {
+                                            "disabled": false,
+                                            "description": {
+                                                "content": "(Required) ",
+                                                "type": "text/plain"
+                                            },
+                                            "key": "cliente",
+                                            "value": "<string>"
+                                        }
+                                    ],
+                                    "variable": []
+                                },
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "*/*"
+                                    }
+                                ],
+                                "method": "GET",
+                                "body": {}
+                            },
+                            "status": "OK",
+                            "code": 200,
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "*/*"
+                                }
+                            ],
+                            "body": "[\n  {\n    \"Fecha\": \"<dateTime>\",\n    \"Cliente\": \"<string>\",\n    \"Numero Cuenta\": \"<string>\",\n    \"Tipo\": \"<string>\",\n    \"Saldo Inicial\": \"<number>\",\n    \"Estado\": \"<boolean>\",\n    \"Movimiento\": \"<number>\",\n    \"Saldo Disponible\": \"<number>\"\n  },\n  {\n    \"Fecha\": \"<dateTime>\",\n    \"Cliente\": \"<string>\",\n    \"Numero Cuenta\": \"<string>\",\n    \"Tipo\": \"<string>\",\n    \"Saldo Inicial\": \"<number>\",\n    \"Estado\": \"<boolean>\",\n    \"Movimiento\": \"<number>\",\n    \"Saldo Disponible\": \"<number>\"\n  }\n]",
+                            "cookie": [],
+                            "_postman_previewlanguage": "text"
+                        }
+                    ],
+                    "event": [],
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    }
+                }
+            ]
+        }
+    ],
+    "event": [],
+    "variable": [
+        {
+            "key": "baseUrl",
+            "value": "http://localhost:8082"
+        }
+    ],
+    "info": {
+        "_postman_id": "50b74464-cf02-4166-a658-4822c2bd1b81",
+        "name": "Microservicio Cuenta/Movimiento",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+        "description": {
+            "content": "Gestión de cuentas y movimientos del sistema bancario. CRUD de /cuentas y /movimientos (F1, F2), validación de saldo (F3) y reporte de estado de cuenta (F4).",
+            "type": "text/plain"
+        }
+    }
+}

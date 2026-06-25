@@ -1,0 +1,59 @@
+<div class="cliente-list-container">
+  <div class="cliente-list-header">
+    <h2>Clientes</h2>
+    <a mat-raised-button color="primary" routerLink="/clientes/nuevo">
+      <mat-icon>add</mat-icon>
+      Nuevo cliente
+    </a>
+  </div>
+
+  <mat-progress-bar *ngIf="cargando" mode="indeterminate"></mat-progress-bar>
+
+  <p *ngIf="errorCarga" class="mensaje-error">No se pudo cargar la lista de clientes. Intenta de nuevo.</p>
+
+  <table *ngIf="!errorCarga" mat-table [dataSource]="dataSource" class="mat-elevation-z2 cliente-table">
+
+    <ng-container matColumnDef="nombre">
+      <th mat-header-cell *matHeaderCellDef>Nombre</th>
+      <td mat-cell *matCellDef="let cliente">{{ cliente.nombre }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="identificacion">
+      <th mat-header-cell *matHeaderCellDef>Identificacion</th>
+      <td mat-cell *matCellDef="let cliente">{{ cliente.identificacion }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="clienteId">
+      <th mat-header-cell *matHeaderCellDef>Usuario</th>
+      <td mat-cell *matCellDef="let cliente">{{ cliente.clienteId }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="estado">
+      <th mat-header-cell *matHeaderCellDef>Estado</th>
+      <td mat-cell *matCellDef="let cliente">{{ cliente.estado ? 'Activo' : 'Inactivo' }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="acciones">
+      <th mat-header-cell *matHeaderCellDef>Acciones</th>
+      <td mat-cell *matCellDef="let cliente">
+        <button mat-icon-button (click)="verCliente(cliente)" aria-label="Ver cliente">
+          <mat-icon>visibility</mat-icon>
+        </button>
+        <button mat-icon-button (click)="editarCliente(cliente)" aria-label="Editar cliente">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button (click)="eliminarCliente(cliente)"
+                [disabled]="eliminandoId === cliente.id" aria-label="Eliminar cliente">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="columnas"></tr>
+    <tr mat-row *matRowDef="let row; columns: columnas;"></tr>
+  </table>
+
+  <p *ngIf="!cargando && !errorCarga && dataSource.data.length === 0">No hay clientes registrados.</p>
+
+  <mat-paginator *ngIf="!errorCarga" [pageSizeOptions]="[5, 10, 25]" showFirstLastButtons></mat-paginator>
+</div>

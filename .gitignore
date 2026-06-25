@@ -1,0 +1,13 @@
+.env
+
+target/
+*.class
+
+.idea/
+*.iml
+out/
+
+node_modules/
+dist/
+
+jmeter.log

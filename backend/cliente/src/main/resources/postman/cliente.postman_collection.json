@@ -1,0 +1,702 @@
+{
+    "item": [
+        {
+            "name": "clientes",
+            "description": "",
+            "item": [
+                {
+                    "name": "{id}",
+                    "description": "",
+                    "item": [
+                        {
+                            "id": "85bbb22b-2845-49b4-8c1e-1b18c4b5b9da",
+                            "name": "buscar Por Id",
+                            "request": {
+                                "name": "buscar Por Id",
+                                "description": {},
+                                "url": {
+                                    "path": [
+                                        "clientes",
+                                        ":id"
+                                    ],
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "query": [],
+                                    "variable": [
+                                        {
+                                            "type": "any",
+                                            "value": "<long>",
+                                            "key": "id",
+                                            "disabled": false,
+                                            "description": {
+                                                "content": "(Required) ",
+                                                "type": "text/plain"
+                                            }
+                                        }
+                                    ]
+                                },
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "*/*"
+                                    }
+                                ],
+                                "method": "GET",
+                                "body": {},
+                                "auth": null
+                            },
+                            "response": [
+                                {
+                                    "id": "57bdd0ff-1c95-4689-a2f9-94d27b8196cd",
+                                    "name": "OK",
+                                    "originalRequest": {
+                                        "url": {
+                                            "path": [
+                                                "clientes",
+                                                ":id"
+                                            ],
+                                            "host": [
+                                                "{{baseUrl}}"
+                                            ],
+                                            "query": [],
+                                            "variable": [
+                                                {
+                                                    "disabled": false,
+                                                    "description": {
+                                                        "content": "(Required) ",
+                                                        "type": "text/plain"
+                                                    },
+                                                    "type": "any",
+                                                    "value": "<long>",
+                                                    "key": "id"
+                                                }
+                                            ]
+                                        },
+                                        "header": [
+                                            {
+                                                "key": "Accept",
+                                                "value": "*/*"
+                                            }
+                                        ],
+                                        "method": "GET",
+                                        "body": {}
+                                    },
+                                    "status": "OK",
+                                    "code": 200,
+                                    "header": [
+                                        {
+                                            "key": "Content-Type",
+                                            "value": "*/*"
+                                        }
+                                    ],
+                                    "body": "{\n  \"id\": \"<long>\",\n  \"nombre\": \"<string>\",\n  \"genero\": \"<string>\",\n  \"edad\": \"<integer>\",\n  \"identificacion\": \"<string>\",\n  \"direccion\": \"<string>\",\n  \"telefono\": \"<string>\",\n  \"clienteId\": \"<string>\",\n  \"estado\": \"<boolean>\"\n}",
+                                    "cookie": [],
+                                    "_postman_previewlanguage": "text"
+                                }
+                            ],
+                            "event": [],
+                            "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                            }
+                        },
+                        {
+                            "id": "bf9201b8-14a4-4ee6-8758-0f31a4087b75",
+                            "name": "actualizar",
+                            "request": {
+                                "name": "actualizar",
+                                "description": {},
+                                "url": {
+                                    "path": [
+                                        "clientes",
+                                        ":id"
+                                    ],
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "query": [],
+                                    "variable": [
+                                        {
+                                            "type": "any",
+                                            "value": "<long>",
+                                            "key": "id",
+                                            "disabled": false,
+                                            "description": {
+                                                "content": "(Required) ",
+                                                "type": "text/plain"
+                                            }
+                                        }
+                                    ]
+                                },
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "*/*"
+                                    }
+                                ],
+                                "method": "PUT",
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n  \"clienteId\": \"<string>\",\n  \"contrasena\": \"<string>\",\n  \"estado\": \"<boolean>\",\n  \"identificacion\": \"<string>\",\n  \"nombre\": \"<string>\",\n  \"genero\": \"<string>\",\n  \"edad\": \"<integer>\",\n  \"direccion\": \"<string>\",\n  \"telefono\": \"<string>\"\n}",
+                                    "options": {
+                                        "raw": {
+                                            "headerFamily": "json",
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "auth": null
+                            },
+                            "response": [
+                                {
+                                    "id": "7aed5703-e071-4f41-98a6-e6ad571f85a3",
+                                    "name": "OK",
+                                    "originalRequest": {
+                                        "url": {
+                                            "path": [
+                                                "clientes",
+                                                ":id"
+                                            ],
+                                            "host": [
+                                                "{{baseUrl}}"
+                                            ],
+                                            "query": [],
+                                            "variable": [
+                                                {
+                                                    "disabled": false,
+                                                    "description": {
+                                                        "content": "(Required) ",
+                                                        "type": "text/plain"
+                                                    },
+                                                    "type": "any",
+                                                    "value": "<long>",
+                                                    "key": "id"
+                                                }
+                                            ]
+                                        },
+                                        "header": [
+                                            {
+                                                "key": "Content-Type",
+                                                "value": "application/json"
+                                            },
+                                            {
+                                                "key": "Accept",
+                                                "value": "*/*"
+                                            }
+                                        ],
+                                        "method": "PUT",
+                                        "body": {
+                                            "mode": "raw",
+                                            "raw": "{\n  \"clienteId\": \"<string>\",\n  \"contrasena\": \"<string>\",\n  \"estado\": \"<boolean>\",\n  \"identificacion\": \"<string>\",\n  \"nombre\": \"<string>\",\n  \"genero\": \"<string>\",\n  \"edad\": \"<integer>\",\n  \"direccion\": \"<string>\",\n  \"telefono\": \"<string>\"\n}",
+                                            "options": {
+                                                "raw": {
+                                                    "headerFamily": "json",
+                                                    "language": "json"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "status": "OK",
+                                    "code": 200,
+                                    "header": [
+                                        {
+                                            "key": "Content-Type",
+                                            "value": "*/*"
+                                        }
+                                    ],
+                                    "body": "{\n  \"id\": \"<long>\",\n  \"nombre\": \"<string>\",\n  \"genero\": \"<string>\",\n  \"edad\": \"<integer>\",\n  \"identificacion\": \"<string>\",\n  \"direccion\": \"<string>\",\n  \"telefono\": \"<string>\",\n  \"clienteId\": \"<string>\",\n  \"estado\": \"<boolean>\"\n}",
+                                    "cookie": [],
+                                    "_postman_previewlanguage": "text"
+                                }
+                            ],
+                            "event": [],
+                            "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                            }
+                        },
+                        {
+                            "id": "91dc9444-b48a-4d79-bb72-2676740ce314",
+                            "name": "eliminar",
+                            "request": {
+                                "name": "eliminar",
+                                "description": {},
+                                "url": {
+                                    "path": [
+                                        "clientes",
+                                        ":id"
+                                    ],
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "query": [],
+                                    "variable": [
+                                        {
+                                            "type": "any",
+                                            "value": "<long>",
+                                            "key": "id",
+                                            "disabled": false,
+                                            "description": {
+                                                "content": "(Required) ",
+                                                "type": "text/plain"
+                                            }
+                                        }
+                                    ]
+                                },
+                                "method": "DELETE",
+                                "body": {},
+                                "auth": null
+                            },
+                            "response": [
+                                {
+                                    "id": "0ee6156a-78da-44db-bc74-7e5fdfcd54c6",
+                                    "name": "No Content",
+                                    "originalRequest": {
+                                        "url": {
+                                            "path": [
+                                                "clientes",
+                                                ":id"
+                                            ],
+                                            "host": [
+                                                "{{baseUrl}}"
+                                            ],
+                                            "query": [],
+                                            "variable": [
+                                                {
+                                                    "disabled": false,
+                                                    "description": {
+                                                        "content": "(Required) ",
+                                                        "type": "text/plain"
+                                                    },
+                                                    "type": "any",
+                                                    "value": "<long>",
+                                                    "key": "id"
+                                                }
+                                            ]
+                                        },
+                                        "method": "DELETE",
+                                        "body": {}
+                                    },
+                                    "status": "No Content",
+                                    "code": 204,
+                                    "header": [],
+                                    "cookie": [],
+                                    "_postman_previewlanguage": "text"
+                                }
+                            ],
+                            "event": [],
+                            "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                            }
+                        },
+                        {
+                            "id": "569e318b-a1aa-4612-8a68-11811d6a24f6",
+                            "name": "actualizar Parcial",
+                            "request": {
+                                "name": "actualizar Parcial",
+                                "description": {},
+                                "url": {
+                                    "path": [
+                                        "clientes",
+                                        ":id"
+                                    ],
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "query": [],
+                                    "variable": [
+                                        {
+                                            "type": "any",
+                                            "value": "<long>",
+                                            "key": "id",
+                                            "disabled": false,
+                                            "description": {
+                                                "content": "(Required) ",
+                                                "type": "text/plain"
+                                            }
+                                        }
+                                    ]
+                                },
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "*/*"
+                                    }
+                                ],
+                                "method": "PATCH",
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n  \"nombre\": \"<string>\",\n  \"genero\": \"<string>\",\n  \"edad\": \"<integer>\",\n  \"identificacion\": \"<string>\",\n  \"direccion\": \"<string>\",\n  \"telefono\": \"<string>\",\n  \"contrasena\": \"<string>\",\n  \"estado\": \"<boolean>\"\n}",
+                                    "options": {
+                                        "raw": {
+                                            "headerFamily": "json",
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "auth": null
+                            },
+                            "response": [
+                                {
+                                    "id": "311d9635-a1fc-4e8e-8fdf-02b079d2c4e8",
+                                    "name": "OK",
+                                    "originalRequest": {
+                                        "url": {
+                                            "path": [
+                                                "clientes",
+                                                ":id"
+                                            ],
+                                            "host": [
+                                                "{{baseUrl}}"
+                                            ],
+                                            "query": [],
+                                            "variable": [
+                                                {
+                                                    "disabled": false,
+                                                    "description": {
+                                                        "content": "(Required) ",
+                                                        "type": "text/plain"
+                                                    },
+                                                    "type": "any",
+                                                    "value": "<long>",
+                                                    "key": "id"
+                                                }
+                                            ]
+                                        },
+                                        "header": [
+                                            {
+                                                "key": "Content-Type",
+                                                "value": "application/json"
+                                            },
+                                            {
+                                                "key": "Accept",
+                                                "value": "*/*"
+                                            }
+                                        ],
+                                        "method": "PATCH",
+                                        "body": {
+                                            "mode": "raw",
+                                            "raw": "{\n  \"nombre\": \"<string>\",\n  \"genero\": \"<string>\",\n  \"edad\": \"<integer>\",\n  \"identificacion\": \"<string>\",\n  \"direccion\": \"<string>\",\n  \"telefono\": \"<string>\",\n  \"contrasena\": \"<string>\",\n  \"estado\": \"<boolean>\"\n}",
+                                            "options": {
+                                                "raw": {
+                                                    "headerFamily": "json",
+                                                    "language": "json"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "status": "OK",
+                                    "code": 200,
+                                    "header": [
+                                        {
+                                            "key": "Content-Type",
+                                            "value": "*/*"
+                                        }
+                                    ],
+                                    "body": "{\n  \"id\": \"<long>\",\n  \"nombre\": \"<string>\",\n  \"genero\": \"<string>\",\n  \"edad\": \"<integer>\",\n  \"identificacion\": \"<string>\",\n  \"direccion\": \"<string>\",\n  \"telefono\": \"<string>\",\n  \"clienteId\": \"<string>\",\n  \"estado\": \"<boolean>\"\n}",
+                                    "cookie": [],
+                                    "_postman_previewlanguage": "text"
+                                }
+                            ],
+                            "event": [],
+                            "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": "ea7ac87c-4a94-4b82-9256-513d14d9c210",
+                    "name": "listar",
+                    "request": {
+                        "name": "listar",
+                        "description": {},
+                        "url": {
+                            "path": [
+                                "clientes"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [],
+                            "variable": []
+                        },
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "*/*"
+                            }
+                        ],
+                        "method": "GET",
+                        "body": {},
+                        "auth": null
+                    },
+                    "response": [
+                        {
+                            "id": "8cf2181a-4f77-4291-a7f6-4cba56b35c3e",
+                            "name": "OK",
+                            "originalRequest": {
+                                "url": {
+                                    "path": [
+                                        "clientes"
+                                    ],
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "query": [],
+                                    "variable": []
+                                },
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "*/*"
+                                    }
+                                ],
+                                "method": "GET",
+                                "body": {}
+                            },
+                            "status": "OK",
+                            "code": 200,
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "*/*"
+                                }
+                            ],
+                            "body": "[\n  {\n    \"id\": \"<long>\",\n    \"nombre\": \"<string>\",\n    \"genero\": \"<string>\",\n    \"edad\": \"<integer>\",\n    \"identificacion\": \"<string>\",\n    \"direccion\": \"<string>\",\n    \"telefono\": \"<string>\",\n    \"clienteId\": \"<string>\",\n    \"estado\": \"<boolean>\"\n  },\n  {\n    \"id\": \"<long>\",\n    \"nombre\": \"<string>\",\n    \"genero\": \"<string>\",\n    \"edad\": \"<integer>\",\n    \"identificacion\": \"<string>\",\n    \"direccion\": \"<string>\",\n    \"telefono\": \"<string>\",\n    \"clienteId\": \"<string>\",\n    \"estado\": \"<boolean>\"\n  }\n]",
+                            "cookie": [],
+                            "_postman_previewlanguage": "text"
+                        }
+                    ],
+                    "event": [],
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    }
+                },
+                {
+                    "id": "7e84b54f-e405-418f-b5ff-4f7a05932e33",
+                    "name": "crear",
+                    "request": {
+                        "name": "crear",
+                        "description": {},
+                        "url": {
+                            "path": [
+                                "clientes"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [],
+                            "variable": []
+                        },
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "*/*"
+                            }
+                        ],
+                        "method": "POST",
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"clienteId\": \"<string>\",\n  \"contrasena\": \"<string>\",\n  \"estado\": \"<boolean>\",\n  \"identificacion\": \"<string>\",\n  \"nombre\": \"<string>\",\n  \"genero\": \"<string>\",\n  \"edad\": \"<integer>\",\n  \"direccion\": \"<string>\",\n  \"telefono\": \"<string>\"\n}",
+                            "options": {
+                                "raw": {
+                                    "headerFamily": "json",
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "auth": null
+                    },
+                    "response": [
+                        {
+                            "id": "d9285d35-4c02-4bd6-931e-7cb670fa5adf",
+                            "name": "Created",
+                            "originalRequest": {
+                                "url": {
+                                    "path": [
+                                        "clientes"
+                                    ],
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "query": [],
+                                    "variable": []
+                                },
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "*/*"
+                                    }
+                                ],
+                                "method": "POST",
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n  \"clienteId\": \"<string>\",\n  \"contrasena\": \"<string>\",\n  \"estado\": \"<boolean>\",\n  \"identificacion\": \"<string>\",\n  \"nombre\": \"<string>\",\n  \"genero\": \"<string>\",\n  \"edad\": \"<integer>\",\n  \"direccion\": \"<string>\",\n  \"telefono\": \"<string>\"\n}",
+                                    "options": {
+                                        "raw": {
+                                            "headerFamily": "json",
+                                            "language": "json"
+                                        }
+                                    }
+                                }
+                            },
+                            "status": "Created",
+                            "code": 201,
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "*/*"
+                                }
+                            ],
+                            "body": "{\n  \"id\": \"<long>\",\n  \"nombre\": \"<string>\",\n  \"genero\": \"<string>\",\n  \"edad\": \"<integer>\",\n  \"identificacion\": \"<string>\",\n  \"direccion\": \"<string>\",\n  \"telefono\": \"<string>\",\n  \"clienteId\": \"<string>\",\n  \"estado\": \"<boolean>\"\n}",
+                            "cookie": [],
+                            "_postman_previewlanguage": "text"
+                        }
+                    ],
+                    "event": [],
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    }
+                },
+                {
+                    "name": "cliente-id",
+                    "description": "",
+                    "item": [
+                        {
+                            "name": "{clienteId}",
+                            "description": "",
+                            "item": [
+                                {
+                                    "id": "7b7f73bc-fee2-414c-a37d-ef9629f69134",
+                                    "name": "buscar Por Cliente Id",
+                                    "request": {
+                                        "name": "buscar Por Cliente Id",
+                                        "description": {},
+                                        "url": {
+                                            "path": [
+                                                "clientes",
+                                                "cliente-id",
+                                                ":clienteId"
+                                            ],
+                                            "host": [
+                                                "{{baseUrl}}"
+                                            ],
+                                            "query": [],
+                                            "variable": [
+                                                {
+                                                    "type": "any",
+                                                    "value": "<string>",
+                                                    "key": "clienteId",
+                                                    "disabled": false,
+                                                    "description": {
+                                                        "content": "(Required) ",
+                                                        "type": "text/plain"
+                                                    }
+                                                }
+                                            ]
+                                        },
+                                        "header": [
+                                            {
+                                                "key": "Accept",
+                                                "value": "*/*"
+                                            }
+                                        ],
+                                        "method": "GET",
+                                        "body": {},
+                                        "auth": null
+                                    },
+                                    "response": [
+                                        {
+                                            "id": "50bc17d1-de98-4224-ba31-f12b0c14e812",
+                                            "name": "OK",
+                                            "originalRequest": {
+                                                "url": {
+                                                    "path": [
+                                                        "clientes",
+                                                        "cliente-id",
+                                                        ":clienteId"
+                                                    ],
+                                                    "host": [
+                                                        "{{baseUrl}}"
+                                                    ],
+                                                    "query": [],
+                                                    "variable": [
+                                                        {
+                                                            "disabled": false,
+                                                            "description": {
+                                                                "content": "(Required) ",
+                                                                "type": "text/plain"
+                                                            },
+                                                            "type": "any",
+                                                            "value": "<string>",
+                                                            "key": "clienteId"
+                                                        }
+                                                    ]
+                                                },
+                                                "header": [
+                                                    {
+                                                        "key": "Accept",
+                                                        "value": "*/*"
+                                                    }
+                                                ],
+                                                "method": "GET",
+                                                "body": {}
+                                            },
+                                            "status": "OK",
+                                            "code": 200,
+                                            "header": [
+                                                {
+                                                    "key": "Content-Type",
+                                                    "value": "*/*"
+                                                }
+                                            ],
+                                            "body": "{\n  \"id\": \"<long>\",\n  \"nombre\": \"<string>\",\n  \"genero\": \"<string>\",\n  \"edad\": \"<integer>\",\n  \"identificacion\": \"<string>\",\n  \"direccion\": \"<string>\",\n  \"telefono\": \"<string>\",\n  \"clienteId\": \"<string>\",\n  \"estado\": \"<boolean>\"\n}",
+                                            "cookie": [],
+                                            "_postman_previewlanguage": "text"
+                                        }
+                                    ],
+                                    "event": [],
+                                    "protocolProfileBehavior": {
+                                        "disableBodyPruning": true
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "event": [],
+    "variable": [
+        {
+            "key": "baseUrl",
+            "value": "http://localhost:8081"
+        }
+    ],
+    "info": {
+        "_postman_id": "7578f27d-65c9-4824-90d8-ca0b82a15280",
+        "name": "Microservicio Cliente/Persona",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+        "description": {
+            "content": "Gestión de clientes y personas del sistema bancario. CRUD de /clientes (F1) y búsqueda por clienteId para comunicación entre microservicios.",
+            "type": "text/plain"
+        }
+    }
+}
